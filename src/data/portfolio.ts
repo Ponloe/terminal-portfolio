@@ -6,9 +6,13 @@ export type Project = {
 };
 export const profile: { name: string; introduction: string; degree: string; links: PortfolioLink[]; resume: PortfolioLink | null } = {
   name: "Soponloe Sovann",
-  introduction: "I deploy and maintain Linux-based systems, connect the infrastructure behind applications, and investigate what happens when things go wrong. Explore what I’ve built, how I implemented it, and how I verify it.",
+  introduction: "I deploy and maintain Linux-based systems, connect the infrastructure behind applications, and investigate what happens when things go wrong.",
   degree: "Computer science graduate focused on cloud infrastructure and operations.",
-  links: [], // Add supplied email (mailto:), GitHub, and LinkedIn links here.
+  links: [
+    { label: "GitHub", href: "https://github.com/ponloe" },
+    { label: "Email", href: "mailto:sovannsoponloe@gmail.com" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/soponloe/" },
+  ],
   resume: null, // After adding public/resume.pdf: { label: "Résumé", href: "/resume.pdf" }
 };
 export const projects: Project[] = [
@@ -44,8 +48,8 @@ export const skills: { group: string; handsOn: string[]; learning: string[] }[] 
   { group: "Cloud platforms", handsOn: ["DigitalOcean", "Cloudflare DNS & CDN"], learning: [] },
   { group: "Linux", handsOn: ["Runtime configuration", "systemd", "Service status & logs"], learning: [] },
   { group: "Networking", handsOn: ["DNS", "Firewall rules", "Service ports", "Load balancing"], learning: [] },
-  { group: "Containers", handsOn: [], learning: [] }, // Add specific learning areas when confirmed.
-  { group: "Deployment", handsOn: ["Go services", "Nginx", "Apache", "PostgreSQL", "Replication & backups", "curl verification"], learning: [] },
+  { group: "Containers", handsOn: ["Docker"], learning: ["Kubernetes"] }, // Add specific learning areas when confirmed.
+  { group: "Deployment", handsOn: ["Go services", "Nginx", "Apache", "PostgreSQL", "Replication & backups"], learning: [] },
 ];
 
 // Illustrative browser-only scripts, separate from verified project claims.

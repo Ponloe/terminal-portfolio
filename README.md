@@ -85,3 +85,31 @@ These tests exercise the command registry and component state/effect logic with 
 ### Welcome animation
 
 On arrival, a brief decorative startup log reveals in sequence, followed by the welcome copy. The ASCII server lights, signal, and welcome cursors loop continuously from arrival. The “Pause welcome animations” checkbox stops these decorative loops; unchecking it resumes them. The entrance text reveals only once. Shortcut hover/focus glow adds feedback afterward. These are CSS-only effects on server-rendered content: the prompt is usable immediately, content space stays reserved, and reduced motion shows everything without animation. Tune the `startup-*`, `welcome-*`, and `server-*` rules in `app/globals.css`.
+
+## Docker and automatic Docker Hub publishing
+
+The Docker image builds the static export with Node.js and serves it with Nginx on port 80.
+
+```sh
+docker build -t terminal-portfolio .
+docker run --rm -p 3000:80 terminal-portfolio
+```
+
+Open http://localhost:3000. The image build needs internet access for npm packages and Google Fonts.
+
+To enable publishing:
+
+1. Create a Docker Hub repository named `terminal-portfolio` under your Docker Hub username.
+2. Create a Docker Hub personal access token with write permission for the repository.
+3. In this GitHub repository, open **Settings → Secrets and variables → Actions → New repository secret** and add `DOCKERHUB_USERNAME` (your Docker Hub username) and `DOCKERHUB_TOKEN` (the token). Your Docker Hub username may differ from your GitHub username. Never commit the token.
+4. Commit and push these files. The **Publish Docker image** workflow runs on every push and can also be run manually from the Actions tab.
+
+Images are published as `YOUR_DOCKERHUB_USERNAME/terminal-portfolio`. Every push gets a branch or tag name and a `sha-<full-commit-hash>` tag. Only the default branch updates `latest`. Both Linux AMD64 and ARM64 images are published.
+
+Run the published image:
+
+```sh
+docker run --rm -p 3000:80 YOUR_DOCKERHUB_USERNAME/terminal-portfolio:latest
+```
+
+Publishing an image does not automatically update a running container; pull the new image and recreate your container to deploy it.
