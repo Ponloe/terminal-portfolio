@@ -22,7 +22,7 @@ export default function Home() {
               <div className="intro-copy">
                 <p className="eyebrow">HELLO, WORLD. I’M</p>
                 <h1 id="name">{profile.name}<span className="cursor welcome-cursor" aria-hidden="true">_</span></h1>
-                <p className="role">Computer science graduate <span aria-hidden="true">/</span> Cloud infrastructure & operations</p>
+                <p className="role">Computer science graduate <span aria-hidden="true">/</span> Cloud engineer</p>
                 <p className="intro-description">{profile.introduction}</p>
               </div>
               <pre className="server-art" aria-hidden="true">{`      .----------.\n     /__________/|\n     |  _  _  `}<span className="server-led led-one">o</span>{` | |\n     |----------| |\n     |  _  _  `}<span className="server-led led-two">o</span>{` | |\n     |----------| |\n     |  _  _  `}<span className="server-led led-three">o</span>{` | /\n     '----------'\n       |  |  |\n    ---'  |  '---\n          `}<span className="server-signal">|</span></pre>
