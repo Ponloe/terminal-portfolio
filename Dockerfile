@@ -1,4 +1,5 @@
-FROM node:22-alpine AS build
+# Build static assets natively once; the exported files work on both architectures.
+FROM --platform=$BUILDPLATFORM node:22-alpine AS build
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY package.json package-lock.json ./
